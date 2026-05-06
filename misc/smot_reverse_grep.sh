@@ -11,5 +11,5 @@ function join_by {
     echo "$*"
 }
 
-excluded_taxa=$(join_by "|" $(cat $1))
-smof grep -vP "($excluded_taxa)"
+excluded_taxa=$(join_by "|" $(cat $2))
+smof grep -vP "($excluded_taxa)" $1
