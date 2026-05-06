@@ -15,16 +15,12 @@ end_year = float(args.higher_end)
 
 filtered_sequences= []
 
-valid_characters=set(["A","T","G","C","N","u","a","t","g","c","n"])
-
 for record in records:
     alphabet = set(record.seq)
-    if len(alphabet - valid_characters) > 0:
-        continue
     name = record.name
     date_str = name.split("|")[-1]
     date = datetime.timetuple(datetime.strptime(date_str,"%Y-%m-%d"))
     dec_date = date.tm_year + (date.tm_yday/365)
-    if start_year <= dec_date < end_year and "p" not in record.seq:
+    if start_year <= dec_date < end_year:
         filtered_sequences.append(record)
 SeqIO.write(filtered_sequences,args.output_file,"fasta")
