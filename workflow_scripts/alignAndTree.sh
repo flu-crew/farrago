@@ -17,7 +17,7 @@ do
         cd ${i}
         mafft --thread -1 ${pref}_${i}.fasta > ${pref}_${i}.aln
         
-        iqtree -T AUTO -s ${pref}_${i}.aln -m MFP -B 1000 --bnni --alrt 1000
+        iqtree3 -T AUTO -s ${pref}_${i}.aln -m MFP -B 1000 --bnni --alrt 1000
 
         cd ..
     fi
